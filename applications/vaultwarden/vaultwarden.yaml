@@ -10,7 +10,7 @@ spec:
   project: default
   sources:
     # Source 1: The remote Helm Chart
-    - repoURL: guerzon.github.io
+    - repoURL: https://guerzon.github.io/vaultwarde
       chart: vaultwarden
       targetRevision: 0.18.0
       helm:
