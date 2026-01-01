@@ -1,0 +1,11 @@
+ingress:
+  enabled: true
+  hostname: passwords.local
+image:
+  tag: 1.34.3-alpine # Use an immutable tag
+# Enable persistence
+persistence:
+  config:
+    enabled: true
+    type: pvc
+    size: 5Gi
