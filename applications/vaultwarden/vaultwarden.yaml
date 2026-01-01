@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vaultwarden
+  namespace: argocd
+spec:
+  destination:
+    namespace: vaultwarden # Target namespace for the deployment
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - values.yaml
+    path: applications/vaultwarden # Path to the values.yaml in your repo
+    repoURL: github.com/Gsmith2518/hfswms-argo # Your application repo
+    targetRevision: HEAD # Or a specific commit/tag for better control
+  sources:
+  - chart: vaultwarden
+    repoURL: https://guerzon.github.io/vaultwarden
+    targetRevision: 0.20.0 # Pin to a specific chart version
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true # Automatically sync any drift from Git
+    syncOptions:
+    - CreateNamespace=true
