@@ -8,13 +8,18 @@ spec:
     namespace: vaultwarden # Target namespace for the deployment
     server: https://kubernetes.default.svc
   project: default
-  source:
-    helm:
-      valueFiles:
-      - applications/vaultwarden/values.yaml
-#    path: applications/vaultwarden # Path to the values.yaml in your repo
-    repoURL: github.com/Gsmith2518/hfswms-argo # Your application repo
-    targetRevision: HEAD # Or a specific commit/tag for better control
+  sources:
+    # Source 1: The remote Helm Chart
+    - repoURL: guerzon.github.io
+      chart: vaultwarden
+      targetRevision: 0.18.0
+      helm:
+        valueFiles:
+          - $values/apps/vaultwarden/values.yaml
+    # Source 2: Your Git Repository containing the values.yaml
+    - repoURL: github.com/Gsmith2518/hfswms-argo
+      targetRevision: main
+      ref: values  # This 'ref' matches the '$values' prefix above
   sources:
   - chart: vaultwarden
     repoURL: https://guerzon.github.io/vaultwarden
