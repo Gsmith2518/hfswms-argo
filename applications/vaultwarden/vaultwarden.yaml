@@ -11,8 +11,8 @@ spec:
   source:
     helm:
       valueFiles:
-      - values.yaml
-    path: applications/vaultwarden # Path to the values.yaml in your repo
+      - applications/vaultwarden/values.yaml
+#    path: applications/vaultwarden # Path to the values.yaml in your repo
     repoURL: github.com/Gsmith2518/hfswms-argo # Your application repo
     targetRevision: HEAD # Or a specific commit/tag for better control
   sources:
