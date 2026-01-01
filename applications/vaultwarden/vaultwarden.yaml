@@ -15,7 +15,7 @@ spec:
       targetRevision: 0.18.0
       helm:
         valueFiles:
-          - $values/apps/vaultwarden/values.yaml
+          - $values/applications/vaultwarden/values.yaml
     # Source 2: Your Git Repository containing the values.yaml
     - repoURL: github.com/Gsmith2518/hfswms-argo
       targetRevision: main
