@@ -10,3 +10,4 @@ persistence:
     enabled: true
     type: pvc
     size: 5Gi
+domain: "http://passwords.local"
