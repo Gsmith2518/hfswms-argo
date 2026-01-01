@@ -20,10 +20,6 @@ spec:
     - repoURL: github.com/Gsmith2518/hfswms-argo
       targetRevision: main
       ref: values  # This 'ref' matches the '$values' prefix above
-  sources:
-  - chart: vaultwarden
-    repoURL: https://guerzon.github.io/vaultwarden
-    targetRevision: 0.20.0 # Pin to a specific chart version
   syncPolicy:
     automated:
       prune: true
