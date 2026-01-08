@@ -14,8 +14,10 @@ spec:
   local:
     path: /var/lib/postgres/data
   nodeAffinity:
-  - matchExpressions:
-    - key: kubernetes.io/hostname
-      operator: In
-      values: 
-      - hfswms
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values: 
+          - hfswms
