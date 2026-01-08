@@ -14,7 +14,7 @@ spec:
   local:
     path: /var/lib/postgres/data
   nodeAffinity:
-  - machExpressions:
+  - matchExpressions:
     - key: kubernetes.io/hostname
       operator: In
       values: 
