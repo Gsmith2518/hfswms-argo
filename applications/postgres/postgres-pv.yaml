@@ -9,7 +9,7 @@ spec:
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
-  persistVolumeReclaimPolicy:  Reain
+  persistentVolumeReclaimPolicy:  Retain
   storageClassName: local-storage
   local:
     path: /var/lib/postgres/data
