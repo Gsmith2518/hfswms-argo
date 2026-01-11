@@ -43,7 +43,7 @@ spec:
     path: 'applications/plane'
     helm:
       valueFiles:
-      - /applications/plane/values.yaml
+      - values.yaml
   syncPolicy:
     automated:
       prune: true
