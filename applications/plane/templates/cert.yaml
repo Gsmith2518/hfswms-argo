@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: plane-hfswms-org
+spec:
+  secretName: plane-hfswms-org-tls
+  issuerRef:
+    name: letsencrypt-dns-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - plane.hfswms.org
+

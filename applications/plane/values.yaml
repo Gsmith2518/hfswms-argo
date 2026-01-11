@@ -14,7 +14,7 @@ plane-ce:
       paths:
       - path: /
         pathType: ImplementationSpecific
-  # ssl:
-    # tls_secret_name: 
+  ssl:
+    tls_secret_name: "plane-hfswms-org-tls"
   env:
     storageClass: "longhorn"
