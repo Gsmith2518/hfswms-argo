@@ -8,7 +8,7 @@ ingress:
   
   # Reference the pre-existing wildcard secret
   tls:
-    - secretName: wildcard-hfswms-org-tls
+    - secretName: passwords-hfswms-org-tls
       hosts:
         - passwords.hfswms.org
 image:
