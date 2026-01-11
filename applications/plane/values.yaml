@@ -5,7 +5,8 @@ plane-ce:
   ingress:
     enabled: true
     ingressClass: "traefik"
-    annotations:
+    appHost: "plane.hfswms.org"
+    ingress_annotations:
       traefik.ingress.kubernetes.io/router.tls: "true"
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
     hosts:
@@ -13,6 +14,7 @@ plane-ce:
       paths:
       - path: /
         pathType: ImplementationSpecific
-
+  ssl:
+    # tls_secret_name: 
   env:
     storageClass: "longhorn"
