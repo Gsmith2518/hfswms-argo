@@ -1,18 +1,17 @@
-plane-ce:
-  planeVersion: v1.16.0
-  license:
-    licenseDomain: "plane.hfswms.org" 
-  ingress:
-    enabled: true
-    ingressClass: "traefik"
-    annotations:
-      traefik.ingress.kubernetes.io/router.tls: "true"
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    hosts:
-    - host: "plane.hfswms.org"
-      paths:
-      - path: /
-        pathType: ImplementationSpecific
+planeVersion: v1.16.0
+license:
+  licenseDomain: "plane.hfswms.org" 
+ingress:
+  enabled: true
+  ingressClass: "traefik"
+  annotations:
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+  hosts:
+  - host: "plane.hfswms.org"
+    paths:
+    - path: /
+      pathType: ImplementationSpecific
 
-  env:
-    storageClass: "longhorn"
+env:
+  storageClass: "longhorn"
