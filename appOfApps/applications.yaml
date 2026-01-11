@@ -38,12 +38,12 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    - repoURL: https://github.com/Gsmith2518/hfswms-argo
-      targetRevision: HEAD
-      path: 'applications/plane'
-      helm:
-        valueFiles:
-          - /applications/plane/values.yaml
+    repoURL: https://github.com/Gsmith2518/hfswms-argo
+    targetRevision: HEAD
+    path: 'applications/plane'
+    helm:
+      valueFiles:
+      - /applications/plane/values.yaml
   syncPolicy:
     automated:
       prune: true
