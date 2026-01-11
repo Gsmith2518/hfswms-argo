@@ -1,0 +1,12 @@
+apiVersion: v2
+name: plane-ce-custom-deployment # Name of your custom chart
+description: A custom Helm chart for deploying Plane CE via ArgoCD
+type: application
+version: 1.0.0 # Version of your custom chart
+appVersion: "1.2.0" # or a specific version like "1.0.0"
+
+dependencies:
+  - name: plane-ce
+    version: "1.4.1" # Specify the desired chart version range (e.g., "1.0.19" or ">=1.0.0")
+    repository: "https://helm.plane.so" # The official Plane CE Helm repository URL
+
