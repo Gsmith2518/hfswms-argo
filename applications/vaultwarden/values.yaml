@@ -2,7 +2,15 @@ ingress:
   enabled: true
   class: "traefik"
   hostname: passwords.hfswms.org
-  tlsSecret: wildcard-hfswms-org-tls
+  additionalAnnotations:
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+  
+  # Reference the pre-existing wildcard secret
+  tls:
+    - secretName: wildcard-hfswms-org-tls
+      hosts:
+        - passwords.hfswms.org
 image:
   tag: 1.34.3-alpine # Use an immutable tag
 # Enable persistence
