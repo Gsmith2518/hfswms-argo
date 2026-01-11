@@ -1,5 +1,5 @@
 plane-ce:
-  planeVersion: v1.16.0
+  planeVersion: v1.2.1
   license:
     licenseDomain: "plane.hfswms.org" 
   ingress:
