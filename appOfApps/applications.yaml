@@ -57,7 +57,7 @@ metadata:
   name: wireguard
   namespace: argocd
 spec:
-  desination:
+  destination:
     namespace: wireguard
     server: https://kubernetes.default.svc
   project: default
