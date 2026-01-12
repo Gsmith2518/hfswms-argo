@@ -62,7 +62,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://github.com/Gsmit2518/hfswms-argo
+    repoURL: https://github.com/Gsmith2518/hfswms-argo
     targetRevision: HEAD
     path: 'applications/wireguard'
   syncPolicy:
