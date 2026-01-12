@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wireguard
+  namespace: wireguard
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: wireguard.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: wireguard-http
+                port: 
+                  name: http
+            path: /
+            pathType: Prefix

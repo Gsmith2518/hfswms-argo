@@ -50,3 +50,24 @@ spec:
       selfHeal: true # Automatically sync any drift from Git
     syncOptions:
     - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: wireguard
+  namespace: argocd
+spec:
+  desination:
+    namespace: wireguard
+    server: https://kubernetes.default.svc
+  project: defaul
+  source:
+    repoURL: https://github.com/Gsmit2518/hfswms-argo
+    targetRevision: HEAD
+    path: 'applications/wireguard'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
