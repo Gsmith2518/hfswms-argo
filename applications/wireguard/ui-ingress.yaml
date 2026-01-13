@@ -2,10 +2,22 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: wireguard
-  namespace: wireguard
+  namaspace: wireguard
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
 spec:
   ingressClassName: traefik
   rules:
+    - host: wireguard.hfswms.org
+      http:
+        paths:
+          - backend:
+              service:
+                name: wireguard-http
+                port:
+                  name: http
+            path: /
+            pathType: prefix
     - host: wireguard.local
       http:
         paths:
@@ -16,3 +28,5 @@ spec:
                   name: http
             path: /
             pathType: Prefix
+  tls:
+  - secretName: wireguard-hfswms-org-tls
