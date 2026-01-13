@@ -17,7 +17,7 @@ spec:
                 port:
                   name: http
             path: /
-            pathType: prefix
+            pathType: Prefix
     - host: wireguard.local
       http:
         paths:
