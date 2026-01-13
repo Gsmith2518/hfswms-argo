@@ -18,15 +18,5 @@ spec:
                   name: http
             path: /
             pathType: Prefix
-    - host: wireguard.local
-      http:
-        paths:
-          - backend:
-              service:
-                name: wireguard-http
-                port: 
-                  name: http
-            path: /
-            pathType: Prefix
   tls:
   - secretName: wireguard-hfswms-org-tls
