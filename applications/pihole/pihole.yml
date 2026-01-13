@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pihole
+  labels:
+    app: pihole
+spec:
+  replicas: 1 # Start with 1 replica; high availability requires careful state sync
+  selector:
+    matchLabels:
+      app: pihole
+  template:
+    metadata:
+      labels:
+        app: pihole
+    spec:
+      containers:
+      - name: pihole
+        image: pihole/pihole:latest
+        env:
+        - name: TZ
+          value: "America/Detroit" # Replace with your timezone
+        - name: WEBPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: admin-password
+              key: admin-password
+        - name: FTLCONF_webserver_domain
+          value: "pihole.hfswms.org"
+        ports:
+        - containerPort: 53
+          name: dns-tcp
+          protocol: TCP
+        - containerPort: 53
+          name: dns-udp
+          protocol: UDP
+        - containerPort: 80
+          name: http-web
+          protocol: TCP
+        volumeMounts:
+        - name: pihole-storage
+          mountPath: /etc/pihole
+      volumes:
+        - name: pihole-storage
+          persistentVolumeClaim:
+            claimName: pihole-pvc
+

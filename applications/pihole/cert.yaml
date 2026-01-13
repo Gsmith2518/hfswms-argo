@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: pihole-hfswms-org
+spec:
+  secretName: pihole-hfswms-org-tls
+  issuerRef:
+    name: letsencrypt-dns-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - pihole.hfswms.org
+
