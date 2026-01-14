@@ -13,7 +13,7 @@ argo-cd:
       hostname: argocd.hfswms.org
       path: /
       tls:
-        secretName: argocd-hfswms-org-tls
+        secretName: argocd-server-tls
 
     service:
       servicePortHttp: 443
