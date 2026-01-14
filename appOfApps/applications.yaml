@@ -113,3 +113,28 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd # Target namespace for the deployment
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://github.com/Gsmith2518/hfswms-argo
+    targetRevision: HEAD
+    path: 'applications/argo'
+    helm:
+      valueFiles:
+      - values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true # Automatically sync any drift from Git
+    syncOptions:
+    - CreateNamespace=true
+

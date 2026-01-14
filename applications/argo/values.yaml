@@ -1,0 +1,19 @@
+argocd:
+  global:
+    domain: argocd.hfswms.org
+  configs:
+    params:
+      server.insecure: true
+  server:
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      hostname: argocd.hfswms.org
+      path: /
+      tls:
+        secretName: argocd-hfswms-org-tls
+
+    service:
+      servicePortHttp: 443

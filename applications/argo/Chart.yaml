@@ -1,0 +1,12 @@
+apiVersion: v2
+name: argocd-custom-deployment # Name of your custom chart
+description: A custom Helm chart for deploying ArgoCD
+type: application
+version: 1.0.0 # Version of your custom chart
+appVersion: "v3.2.4" # or a specific version like "1.0.0"
+
+dependencies:
+  - name: argocd
+    version: "9.2.3" # Specify the desired chart version range (e.g., "1.0.19" or ">=1.0.0")
+    repository: "https://argoproj.github.io"
+
