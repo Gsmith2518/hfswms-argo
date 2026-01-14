@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: babybuddy
+spec:
+  replicas: 1  # SQLite only supports one writer; do not scale above 1
+  selector:
+    matchLabels:
+      app: babybuddy
+  template:
+    metadata:
+      labels:
+        app: babybuddy
+    spec:
+      containers:
+      - name: babybuddy
+        image: lscr.io/linuxserver/babybuddy:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: TZ
+          value: "UTC"
+        - name: CSRF_TRUSTED_ORIGINS
+          value: "https://localhost:8080"
+        volumeMounts:
+        - name: babybuddy-data
+          mountPath: /config  # Use /app/data for the official image
+      volumes:
+      - name: babybuddy-data
+        persistentVolumeClaim:
+          claimName: babybuddy-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: babybuddy-service
+spec:
+  selector:
+    app: babybuddy
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: babybuddy-web-ingress
+  namespace: babybuddy
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+    - host: "babybuddy.local"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix 
+            backend:
+              service:
+                name: babybuddy-service                                     
+                port:              
+                  number: 80
