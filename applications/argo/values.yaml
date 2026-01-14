@@ -16,4 +16,4 @@ argo-cd:
         secretName: argocd-server-tls
 
     service:
-      servicePortHttp: 8080
+      servicePortHttp: 80
