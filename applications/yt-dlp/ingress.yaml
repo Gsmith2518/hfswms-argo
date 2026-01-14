@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ytripper-ingress
+  annotations:
+    # Optional: Traefik specific annotation for protocol backend communication
+    # ingress.kubernetes.io/protocol: https 
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+spec:
+  ingressClassName: traefik # Ensure you specify the correct IngressClass
+  rules:
+    - host: "ytripper.hfswms.org"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name:  yt-dlp-webui-service
+                port:
+                  number: 80 # The port your application service exposes (Traefik handles the TLS termination at the ingress level)
+  tls:
+    - hosts:
+        - "ytripper.hfswms.org"
+      secretName: ytripper-hfswms-org-tls # Reference the name of your TLS secret
+

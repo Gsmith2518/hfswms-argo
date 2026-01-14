@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ytripper-hfswms-org
+spec:
+  secretName: ytripper-hfswms-org-tls
+  issuerRef:
+    name: letsencrypt-dns-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - ytripper.hfswms.org
+
