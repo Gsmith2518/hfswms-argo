@@ -1,4 +1,4 @@
-argo:
+argo-cd:
   global:
     domain: argocd.hfswms.org
   configs:
