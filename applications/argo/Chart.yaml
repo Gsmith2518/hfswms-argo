@@ -8,5 +8,5 @@ appVersion: "v3.2.4" # or a specific version like "1.0.0"
 dependencies:
   - name: argo
     version: "9.2.3" # Specify the desired chart version range (e.g., "1.0.19" or ">=1.0.0")
-    repository: "https://argoproj.github.io/"
+    repository: "oci://ghcr.io/argoproj/argo-helm"
 
