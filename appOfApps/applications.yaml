@@ -158,4 +158,24 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
-
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: keycloak
+  namespace: argocd
+spec:
+  destination:
+    namespace: keycloak
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://github.com/Gsmith2518/hfswms-argo
+    targetRevision: HEAD
+    path: 'applications/keycloak'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

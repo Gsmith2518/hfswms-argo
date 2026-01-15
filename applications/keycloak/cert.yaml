@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: keycloak-hfswms-org
+spec:
+  secretName: keycloak-hfswms-org-tls
+  issuerRef:
+    name: letsencrypt-dns-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - keycloak.hfswms.org
+
