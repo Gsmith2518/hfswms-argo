@@ -9,7 +9,8 @@ spec:
       app: joplin-server
   template:
     metadata:
-      app: joplin-server
+      labels:
+        app: joplin-server
     spec:
       containers:
       - name: joplin-server
