@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joplin-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: joplin-server
+  template:
+    metadata:
+      app: joplin-server
+    spec:
+      containers:
+      - name: joplin-server
+        image: joplin/server:3.5.2
+        ports:
+        - containerPort: 22300
+        env:
+        - name: APP_PORT
+          value: "22300"
+        - name: APP_BASE_URL
+          value: "https://notes.hfswms.org"
+        - name: DB_CLIENT
+          value: "pg"
+        - name: POSTGRES_DATABASE
+          value: "joplin"
+        - name: POSTGRES_HOST
+          value: "postgres.postgres"
+        - name: POSTGRES_PORT
+          vale: "5432"
+        - name: POSTGRES_USER
+          value: "joplin"
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: joplin-db-secret
+              key: POSTGRES_PASSWORD
+
