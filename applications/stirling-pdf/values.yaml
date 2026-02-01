@@ -14,4 +14,4 @@ stirling-pdf-chart:
       - name: pdf-editor.hfswms.org
         path: /
         tls: true
-        tlsSecret: stirling-pdf-tls
+        tlsSecret: pdf-editor-hfswms-org-tls
