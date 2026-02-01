@@ -215,6 +215,9 @@ spec:
     repoURL: https://github.com/Gsmith2518/hfswms-argo
     targetRevision: HEAD
     path: 'applications/stirling-pdf'
+    helm:
+      valueFiles:
+      - values.yaml
   syncPolicy:
     automated:
       prune: true
