@@ -1,0 +1,66 @@
+# 1. Enable PostgreSQL as a bundled dependency
+postgresql:
+  enabled: true
+  image:
+    repository: bitnami/postgresql
+    tag: latest
+  auth:
+    database: paperless
+    username: paperless
+    existingSecret: db-pass
+    secretKeys:
+      adminPasswordKey: dbpassword
+      userPasswordKey: dbpassword
+
+
+# 2. Configure Traefik Ingress with custom TLS
+ingress:
+  main:
+    enabled: true
+    # Specify Traefik as the ingress class
+    className: traefik 
+    annotations:
+      # Required for Traefik to route HTTPS properly
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+    hosts:
+      - host: paperless.hfswms.org # Your custom domain
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: paperless-hfswms-org-tls # Your pre-created TLS secret
+        hosts:
+          - paperless.hfswms.org
+
+# 3. Application Environment Variables
+env:
+  PAPERLESS_URL: https://paperless.hfswms.org
+  PAPERLESS_TIME_ZONE: "America/New_York"
+  # Required: Use a unique long string
+  PAPERLESS_SECRET_KEY: "change-me-to-something-random" 
+
+redis:
+  enabled: true
+  image: 
+    repository: bitnami/redis
+    tag: latest
+
+# 4. Persistence (Essential to prevent data loss)
+persistence:
+  data:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 1Gi
+  media:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 20Gi # Adjust based on your document volume
+  consume:
+    accessMode: ReadWriteOnce
+    enabled: true
+    size: 5Gi
+  export:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 10Gi 

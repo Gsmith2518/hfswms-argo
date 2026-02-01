@@ -1,0 +1,20 @@
+# values.yaml
+ingress:
+  enabled: true
+  # Set the ingress class to traefik to ensure Traefik picks it up
+  className: traefik
+  annotations:
+    # Traefik-specific entrypoint (usually 'websecure' for HTTPS)
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    # Force TLS if Traefik isn't globally configured to do so
+    traefik.ingress.kubernetes.io/router.tls: "true"
+  hosts:
+    - host: pdf-editor.hfswms.org
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: pdf-editor-hfswms-org-tls # Reference your custom TLS secret
+      hosts:
+        - pdf-editor.hfswms.org
+
