@@ -10,12 +10,12 @@ stirling-pdf-chart:
       # Force TLS if Traefik isn't globally configured to do so
       traefik.ingress.kubernetes.io/router.tls: "true"
     hosts:
-    - host: pdf-editor.hfswms.org
-      paths:
-      - path: /
-        pathType: Prefix
+      - host: pdf-editor.hfswms.org
+        paths:
+          - path: /
+            pathType: Prefix
     tls:
-    - secretName: pdf-editor-hfswms-org-tls # Reference your custom TLS secret
-      hosts:
-      - pdf-editor.hfswms.org
+      - secretName: pdf-editor-hfswms-org-tls # Reference your custom TLS secret
+        hosts:
+          - pdf-editor.hfswms.org
 
