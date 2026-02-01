@@ -1,5 +1,5 @@
 # values.yaml
-stirling-pdf:
+stirling-pdf-chart:
   ingress:
     enabled: true
     # Set the ingress class to traefik to ensure Traefik picks it up
