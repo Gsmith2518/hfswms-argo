@@ -1,5 +1,8 @@
 # values.yaml
 stirling-pdf-chart:
+  service:
+    type: ClusterIP
+    port: 80
   ingress:
     enabled: true
     # Set the ingress class to traefik to ensure Traefik picks it up
