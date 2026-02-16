@@ -1,4 +1,19 @@
 plane-ce:
+  extraEnv:
+    - name: "EMAIL_PASSWORD"
+      valueFrom:
+        secretKeyRef:
+          name: "plane-smtp-secrets"
+          key: "smtp-password"
+  smtp:
+    enabled: true
+    host: "in-v3.mailjet.com"
+    user: "e249b8ca4c279516b7a38439bad75854"
+    from: "Plane HFSWMS <plane@mail.hfswms.org>"
+    port: 587
+    use_tls: 1
+  apollo:
+    overwrite_fe_url: "https://plane.hfswms.org"
   planeVersion: v1.2.1
   license:
     licenseDomain: "plane.hfswms.org" 
