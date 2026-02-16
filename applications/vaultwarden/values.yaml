@@ -17,6 +17,7 @@ storage:
     size: "15Gi"
     accessModes:
       - ReadWriteOnce
+    accessMode: "ReadWriteOnce"
     class: "local-path"
 persistence:
   config:
