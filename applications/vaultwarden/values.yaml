@@ -11,10 +11,11 @@ ingress:
 image:
   tag: 1.35.3-alpine # Use an immutable tag
 # Enable persistence
-data:
-  name: "vaultwarden-data"
-  size: "15Gi"
-  class: "local-path"
+storage:
+  data:
+    name: "vaultwarden-data"
+    size: "15Gi"
+    class: "local-path"
 persistence:
   config:
     enabled: true
