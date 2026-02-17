@@ -52,6 +52,7 @@ persistence:
     enabled: true
     accessMode: ReadWriteOnce
     size: 1Gi
+    reclaimPolicy: retain
   media:
     enabled: true
     accessMode: ReadWriteOnce
