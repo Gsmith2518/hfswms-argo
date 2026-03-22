@@ -29,7 +29,7 @@ spec:
         - name: POSTGRES_HOST
           value: "postgres.postgres"
         - name: POSTGRES_PORT
-          vale: "5432"
+          value: "5432"
         - name: POSTGRES_USER
           value: "joplin"
         - name: POSTGRES_PASSWORD
